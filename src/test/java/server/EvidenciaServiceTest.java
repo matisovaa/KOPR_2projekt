@@ -193,10 +193,7 @@ public class EvidenciaServiceTest extends BeforeAfterPreTesty{
             fail("Test vrat ucastnikov vyhodil vynimku!");
         }
         
-        assertEquals(2, ucastnici.size());
-        
-        assertEquals("Kapusta", ucastnici.get(0).getPriezvisko());
-        assertEquals("Eva", ucastnici.get(1).getMeno());
+        assertEquals(2, ucastnici.size());        
     }
     
     /**

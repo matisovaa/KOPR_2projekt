@@ -20,7 +20,7 @@ public class MySQLUcastnikDao implements UcastnikDao{
     }
 
     @Override
-    public Long pridajUcastnika(String meno, String priezvisko) {
+    public synchronized Long pridajUcastnika(String meno, String priezvisko) {
         
         MapSqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("meno", meno)
@@ -36,7 +36,7 @@ public class MySQLUcastnikDao implements UcastnikDao{
     }
 
     @Override
-    public List<Ucastnik> vratUcastnikov(PrezencnaListina prezencnaListina) {
+    public synchronized List<Ucastnik> vratUcastnikov(PrezencnaListina prezencnaListina) {
         
         String sql = "SELECT id, meno, priezvisko FROM ucastnik JOIN ucast ON ucastnik.id = ucast.ucastnik_id WHERE prezencna_listina_id = ?";
         
@@ -46,7 +46,7 @@ public class MySQLUcastnikDao implements UcastnikDao{
     }
 
     @Override
-    public Ucastnik dajUcastnika(Long idUcastnika) {
+    public synchronized Ucastnik dajUcastnika(Long idUcastnika) {
         String sql = "SELECT * FROM ucastnik WHERE id = ?";
 
         try {

@@ -20,16 +20,19 @@ public enum Factory {
     private PrezencnaListinaDao prezencnaListinaDao;
     private EvidenciaService evidenciaService;
     
-    public JdbcTemplate getJdbcTemplate() {
+    public synchronized JdbcTemplate getJdbcTemplate() {
 	if (jdbcTemplate == null) {
             MysqlDataSource dataSource;
             dataSource = new MysqlDataSource();
-            // pre spustenie service na databaze, ktorej skript na vytvorenie je v KOPR_2projekt/DB_evidencia_ucasti.sql
+            // pre spustenie service na normalnej netestovacej databaze, 
+            // ktorej skript na vytvorenie je v KOPR_2projekt/DB_evidencia_ucasti.sql
             /*
             dataSource.setDatabaseName("KOPR_evidencia");
             dataSource.setUser("administrator");
             dataSource.setPassword("admin1");
             */
+            
+            // pristup k testovacej databaze
             dataSource.setDatabaseName("KOPR_evidencia_test");
             dataSource.setUser("administratorTest");
             dataSource.setPassword("admintest");
@@ -38,32 +41,32 @@ public enum Factory {
 	return jdbcTemplate;
     }
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+    public synchronized void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 	this.jdbcTemplate = jdbcTemplate;
     }
     
-    public PredmetDao getPredmetDao() {
+    public synchronized PredmetDao getPredmetDao() {
 	if (predmetDao == null) {
             predmetDao = new MySQLPredmetDao();
 	}
 	return predmetDao;
     }    
     
-    public UcastnikDao getUcastnikDao() {
+    public synchronized UcastnikDao getUcastnikDao() {
 	if (ucastnikDao == null) {
             ucastnikDao = new MySQLUcastnikDao();
 	}
 	return ucastnikDao;
     }
     
-    public PrezencnaListinaDao getPrezencnaListinaDao() {
+    public synchronized PrezencnaListinaDao getPrezencnaListinaDao() {
 	if (prezencnaListinaDao == null) {
             prezencnaListinaDao = new MySQLPrezencnaListinaDao();
 	}
 	return prezencnaListinaDao;
     }
     
-    public EvidenciaService getEvidenciaService() {
+    public synchronized EvidenciaService getEvidenciaService() {
 	if (evidenciaService == null) {
             evidenciaService = new EvidenciaService();
 	}

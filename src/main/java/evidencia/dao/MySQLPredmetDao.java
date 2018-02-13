@@ -18,7 +18,7 @@ public class MySQLPredmetDao implements PredmetDao{
     }
 
     @Override
-    public Long pridajPredmet(String nazovPredmetu) {
+    public synchronized Long pridajPredmet(String nazovPredmetu) {
         
         MapSqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("nazov", nazovPredmetu);
@@ -33,7 +33,7 @@ public class MySQLPredmetDao implements PredmetDao{
     }
 
     @Override
-    public Predmet dajPredmet(Long idPredmetu) {
+    public synchronized Predmet dajPredmet(Long idPredmetu) {
         String sql = "SELECT * FROM predmet WHERE id = ?";
 
         try {

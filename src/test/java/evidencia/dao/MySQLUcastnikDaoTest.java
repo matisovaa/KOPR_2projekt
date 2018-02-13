@@ -50,10 +50,7 @@ public class MySQLUcastnikDaoTest extends BeforeAfterPreTesty{
         prezencnejListina.setId(3L);
         
         List<Ucastnik> ucastnici = ucastnikDao.vratUcastnikov(prezencnejListina);
-        assertEquals(2, ucastnici.size());
-        
-        assertEquals("Kapusta", ucastnici.get(0).getPriezvisko());
-        assertEquals("Eva", ucastnici.get(1).getMeno());
+        assertEquals(2, ucastnici.size());        
     }
 
     /**
