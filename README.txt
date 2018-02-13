@@ -11,10 +11,10 @@ Oba projekty:
 	Boli vytvorene v NetBeans IDE 8.2
 
 Databaza:
-	Vyuziva MySQL datab·zu
+	Vyuziva MySQL databazu
 
 Unit testy:
-	- Treba si vyrobiù testovaciu databazu spustenim sql skriptu, ktory sa nachadza v projekte KOPR_2projekt/DB_evidencia_ucasti_test.sql . Tento skript vytvori sam aj pouzivatela, ktory ma opravnenia na testovaciu databazu.
+	- Treba si vyrobit testovaciu databazu spustenim sql skriptu, ktory sa nachadza v projekte KOPR_2projekt/DB_evidencia_ucasti_test.sql . Tento skript vytvori sam aj pouzivatela, ktory ma opravnenia na testovaciu databazu.
 	- Pre testy klienta treba spustit server KOPR_2projekt/src/main/java/server/Server.java
 	- Samotne testy sa nachadzaju v oboch projektoch v adresari src/test/java, v projekte klienta je triedov testu len trieda KlientTest.java
 	
